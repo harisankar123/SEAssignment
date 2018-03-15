@@ -30,7 +30,7 @@ public class ProfileController {
 		}
 		@PostMapping(value="/upload")
 		public ModelAndView uploadToS3( @RequestParam("file") MultipartFile image) {
-			BasicAWSCredentials cred=new BasicAWSCredentials("AKIAIXAF6TBYBPQQYC6Q","QsBwvhdFNGJ0RiuuqgLB8ycfU1YdvQevWC9cBQey");
+			BasicAWSCredentials cred=new BasicAWSCredentials("############","##########################");
 			ModelAndView profilepage= new ModelAndView();
 			AmazonS3 s3client= AmazonS3ClientBuilder
 					.standard()
