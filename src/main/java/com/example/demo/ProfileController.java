@@ -30,7 +30,7 @@ public class ProfileController {
 		}
 		@PostMapping(value="/upload")
 		public ModelAndView uploadToS3( @RequestParam("file") MultipartFile image) {
-			BasicAWSCredentials cred=new BasicAWSCredentials("############","##########################");
+			BasicAWSCredentials cred=new BasicAWSCredentials("Your key","Your credential");
 			ModelAndView profilepage= new ModelAndView();
 			AmazonS3 s3client= AmazonS3ClientBuilder
 					.standard()
@@ -38,10 +38,10 @@ public class ProfileController {
 					.withRegion(Regions.US_EAST_2)
 					.build(); 
 			try {
-				PutObjectRequest putrq= new PutObjectRequest("harisankar",image.getOriginalFilename(),image.getInputStream(),new ObjectMetadata())
+				PutObjectRequest putrq= new PutObjectRequest("#######",image.getOriginalFilename(),image.getInputStream(),new ObjectMetadata())
 						.withCannedAcl(CannedAccessControlList.PublicRead);
 				s3client.putObject(putrq);
-				 String imgSrc="http://"+"harisankar"+".s3.amazonaws.com/"+image.getOriginalFilename();
+				 String imgSrc="http://"+"########"+".s3.amazonaws.com/"+image.getOriginalFilename();
 				 profilepage.addObject("imgSrc", imgSrc);
 				 profilepage.setViewName("profile");
 				 return profilepage;
